@@ -39,7 +39,7 @@ namespace ServerApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct(Product entity){
+        public async Task<ActionResult> CreateProduct(Product entity){
             _socialContext.Products.Add(entity);
             await _socialContext.SaveChangesAsync();
 
@@ -47,6 +47,36 @@ namespace ServerApp.Controllers
             //id bilgisi ile GetProduct 'a gider
             //eklenen ürünü bulursa "201 Created" döner.
             return CreatedAtAction(nameof(GetProduct), new {id=entity.ProductId}, entity);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateProduct(int id, Product entity){
+            //url de gönderdiğim id değeri ile postman üzerindeki body 'den gönderdiğim id 
+            //değerini karşılaştırdım.
+            if(id!=entity.ProductId)
+            {
+                return BadRequest();
+            }
+
+            var product = await _socialContext.Products.FindAsync(id);
+            
+            if(product == null){
+                return NotFound();
+            }
+
+            product.Name = entity.Name;
+            product.Price = entity.Price;
+
+            try
+            {
+                await _socialContext.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
         }
     }
 }
