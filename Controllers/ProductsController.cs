@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ServerApp.Data;
+using ServerApp.DTO;
 using ServerApp.Models;
 
 namespace ServerApp.Controllers
@@ -25,14 +26,24 @@ namespace ServerApp.Controllers
         //localhost:5000/api/Products
         [HttpGet]
         public async Task<ActionResult> GetProducts(){
-            var products = await _socialContext.Products.ToListAsync();
+            var products = await _socialContext.Products.Select(p => new ProductDTO(){
+                ProductId = p.ProductId,
+                Name = p.Name,
+                Price = p.Price,
+                IsActive = p.IsActive
+            }).ToListAsync();
             return Ok(products);
         }
 
         //localhost:5000/api/Products/2 --> 2. id 'deki elemanı getirecek
         [HttpGet("{id}")]
         public async Task<ActionResult> GetProduct(int id){
-            var p = await _socialContext.Products.FirstOrDefaultAsync(x=>x.ProductId == id);
+            var p = await _socialContext.Products.Select(p => new ProductDTO(){
+                ProductId = p.ProductId,
+                Name = p.Name,
+                Price = p.Price,
+                IsActive = p.IsActive
+            }).FirstOrDefaultAsync(x=>x.ProductId == id);
             if(p==null)
                 return NotFound();
             return Ok(p);
