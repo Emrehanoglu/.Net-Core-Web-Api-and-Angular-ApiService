@@ -78,5 +78,16 @@ namespace ServerApp.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await _socialContext.Products.FindAsync(id);
+            if(product==null)
+                return NotFound();
+            _socialContext.Remove(product);
+            await _socialContext.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }
