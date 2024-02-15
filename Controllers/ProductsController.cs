@@ -38,10 +38,15 @@ namespace ServerApp.Controllers
             return Ok(p);
         }
 
-        // [HttpPost]
-        // public IActionResult CreateProduct(Product p){
-        //     _products.Add(p); //Server tarafına ürün eklendi.
-        //     return Ok(p); //eklediğim ürün bilgisini Client tarafına gönderdim.
-        // }
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(Product entity){
+            _socialContext.Products.Add(entity);
+            await _socialContext.SaveChangesAsync();
+
+            //ekleme işleminden sonra ürün eklendi mi kontrolü yapar.
+            //id bilgisi ile GetProduct 'a gider
+            //eklenen ürünü bulursa "201 Created" döner.
+            return CreatedAtAction(nameof(GetProduct), new {id=entity.ProductId}, entity);
+        }
     }
 }
