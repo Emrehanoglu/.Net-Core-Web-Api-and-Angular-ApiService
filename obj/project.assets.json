@@ -8,9 +8,7 @@
           "ref/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {}
         }
       },
       "Microsoft.Bcl.HashCode/1.1.0": {
@@ -19,9 +17,7 @@
           "ref/netcoreapp2.1/Microsoft.Bcl.HashCode.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp2.1/Microsoft.Bcl.HashCode.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp2.1/Microsoft.Bcl.HashCode.dll": {}
         }
       },
       "Microsoft.CSharp/4.7.0": {
@@ -39,27 +35,19 @@
           "SQLitePCLRaw.core": "2.0.2"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.Data.Sqlite.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Data.Sqlite.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Data.Sqlite.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Data.Sqlite.dll": {}
         }
       },
       "Microsoft.DotNet.PlatformAbstractions/3.1.4": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore/3.1.4": {
@@ -77,27 +65,19 @@
           "System.Diagnostics.DiagnosticSource": "4.7.1"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Abstractions/3.1.4": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/3.1.4": {
@@ -116,14 +96,10 @@
           "Microsoft.EntityFrameworkCore.Relational": "3.1.4"
         },
         "compile": {
-          "lib/netstandard2.0/_._": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/_._": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
         },
         "build": {
           "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props": {}
@@ -135,14 +111,10 @@
           "Microsoft.EntityFrameworkCore": "3.1.4"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Sqlite/3.1.4": {
@@ -167,14 +139,10 @@
           "Microsoft.Extensions.DependencyModel": "3.1.4"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Sqlite.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Sqlite.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Sqlite.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Sqlite.dll": {}
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/3.1.4": {
@@ -183,14 +151,10 @@
           "Microsoft.Extensions.Primitives": "3.1.4"
         },
         "compile": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.Caching.Memory/3.1.4": {
@@ -202,14 +166,10 @@
           "Microsoft.Extensions.Options": "3.1.4"
         },
         "compile": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration/3.1.4": {
@@ -218,14 +178,10 @@
           "Microsoft.Extensions.Configuration.Abstractions": "3.1.4"
         },
         "compile": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration.Abstractions/3.1.4": {
@@ -234,14 +190,10 @@
           "Microsoft.Extensions.Primitives": "3.1.4"
         },
         "compile": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration.Binder/3.1.4": {
@@ -250,14 +202,10 @@
           "Microsoft.Extensions.Configuration": "3.1.4"
         },
         "compile": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyInjection/3.1.4": {
@@ -266,27 +214,19 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.4"
         },
         "compile": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.4": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyModel/3.1.4": {
@@ -295,14 +235,10 @@
           "System.Text.Json": "4.7.2"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {}
         }
       },
       "Microsoft.Extensions.Logging/3.1.4": {
@@ -314,27 +250,19 @@
           "Microsoft.Extensions.Options": "3.1.4"
         },
         "compile": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Logging.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Logging.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Logging.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Logging.dll": {}
         }
       },
       "Microsoft.Extensions.Logging.Abstractions/3.1.4": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.Options/3.1.4": {
@@ -344,27 +272,19 @@
           "Microsoft.Extensions.Primitives": "3.1.4"
         },
         "compile": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Options.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Options.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Options.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Options.dll": {}
         }
       },
       "Microsoft.Extensions.Primitives/3.1.4": {
         "type": "package",
         "compile": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.dll": {}
         }
       },
       "SQLitePCLRaw.bundle_e_sqlite3/2.0.2": {
@@ -469,40 +389,28 @@
       "System.Collections.Immutable/1.7.1": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/System.Collections.Immutable.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/System.Collections.Immutable.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.Collections.Immutable.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/System.Collections.Immutable.dll": {}
         }
       },
       "System.ComponentModel.Annotations/4.7.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard2.1/System.ComponentModel.Annotations.dll": {
-            "related": ".xml"
-          }
+          "ref/netstandard2.1/System.ComponentModel.Annotations.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/System.ComponentModel.Annotations.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.1/System.ComponentModel.Annotations.dll": {}
         }
       },
       "System.Diagnostics.DiagnosticSource/4.7.1": {
         "type": "package",
         "compile": {
-          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
       "System.Memory/4.5.3": {
@@ -517,14 +425,10 @@
       "System.Text.Json/4.7.2": {
         "type": "package",
         "compile": {
-          "lib/netcoreapp3.0/System.Text.Json.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.0/System.Text.Json.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
         }
       }
     }
@@ -1276,7 +1180,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -1284,14 +1187,10 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "default"
       }
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -1310,8 +1209,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -1323,7 +1221,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.7.23376.3\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.426\\RuntimeIdentifierGraph.json"
       }
     }
   }

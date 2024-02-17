@@ -23,12 +23,21 @@ namespace ServerApp
         }
 
         public IConfiguration Configuration { get; }
-
+        readonly string MyAllowOrigins = "_myAllowOrigins";
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SocialContext>(x=>x.UseSqlite("Data Source=social.db"));
             services.AddControllers();
+            services.AddCors(options => {
+                options.AddPolicy(
+                    name: "_myAllowOrigins",
+                    builder => {
+                        builder
+                        .WithOrigins("http://localhost:4200","https://localhost:4200") //izin verilecek portlar
+                        .WithMethods("GET","POST","DELETE","PUT"); //izin verilecek request attribute 'leri
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +51,8 @@ namespace ServerApp
             // app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(MyAllowOrigins);
 
             app.UseAuthorization();
 
