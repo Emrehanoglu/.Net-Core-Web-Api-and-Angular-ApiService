@@ -60,3 +60,7 @@ C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\runtimes\win-x
 C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\Emre\Desktop\SocialApp\ServerApp\obj\Debug\netcoreapp3.1\ServerApp.csproj.CopyComplete
 C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

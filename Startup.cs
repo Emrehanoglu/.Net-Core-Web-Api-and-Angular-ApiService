@@ -28,14 +28,15 @@ namespace ServerApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SocialContext>(x=>x.UseSqlite("Data Source=social.db"));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddCors(options => {
                 options.AddPolicy(
                     name: "_myAllowOrigins",
                     builder => {
                         builder
-                        .WithOrigins("http://localhost:4200","https://localhost:4200") //izin verilecek portlar
-                        .WithMethods("GET","POST","DELETE","PUT"); //izin verilecek request attribute 'leri
+                        .AllowAnyHeader()
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod();
                     });
             });
         }
