@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ServerApp.Data;
+using ServerApp.Models;
 
 namespace ServerApp
 {
@@ -28,6 +30,21 @@ namespace ServerApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SocialContext>(x=>x.UseSqlite("Data Source=social.db"));
+            services.AddIdentity<User,Role>().AddEntityFrameworkStores<SocialContext>();
+            services.Configure<IdentityOptions>(options => {
+                options.Password.RequireDigit = true; //parola da sayısal değer olsun.
+                options.Password.RequireLowercase = true; //parola da küçük harf olsun. 
+                options.Password.RequireUppercase = true; //parola da büyük harf olsun. 
+                options.Password.RequireNonAlphanumeric = true; //parola da nokta,virgül gibi değerler olsun.
+                options.Password.RequiredLength = 6; //parola min 6 karakter olsun
+
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); //hesap 5 dk kitlenir
+                options.Lockout.MaxFailedAccessAttempts = 5; //hesap 5 yanlış denemeden sonra kitlenir
+                options.Lockout.AllowedForNewUsers = true; //yeni hesap olsutruna bir kişinin hesabı kitlenebilir
+
+                options.User.AllowedUserNameCharacters="abcABC-._@+"; //parolada olması gereken karakterler
+                options.User.RequireUniqueEmail=true; //kullanıcıların mail adresleri aynı olamaz.
+            });
             services.AddControllers().AddNewtonsoftJson();
             services.AddCors(options => {
                 options.AddPolicy(

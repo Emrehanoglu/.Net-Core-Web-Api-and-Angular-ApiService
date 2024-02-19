@@ -64,3 +64,8 @@ C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.AspN
 C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Emre\Desktop\SocialApp\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
