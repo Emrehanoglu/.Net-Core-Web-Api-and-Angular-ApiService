@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using ServerApp.Data;
 using ServerApp.Models;
 
@@ -55,6 +58,21 @@ namespace ServerApp
                         .AllowAnyOrigin()
                         .AllowAnyMethod();
                     });
+            });
+            services.AddAuthentication(x=>{
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x=>{
+                //gelen token bilgisini nasıl validate edeceğimi söylüyorum
+                x.RequireHttpsMetadata = false; //jwt sadece https protokolünü kullanan isteklerden gelmesin
+                x.SaveToken = true; //token bilgisi Server tarafında kaydedilsin
+                x.TokenValidationParameters = new TokenValidationParameters{
+                    //token bilgisinin 3. kısmı olan imza bilgisi kontrolü yapılsın diyorum
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Secret").Value)),
+                    ValidateIssuer = false, //token 'ı kim olusturdu bilgisi kontrol edilmesin istiyorum
+                    ValidateAudience = false //token 'ın kimin için olusturulduğu bilgisi kontrol edilmesin istiyorum
+                };               
             });
         }
 

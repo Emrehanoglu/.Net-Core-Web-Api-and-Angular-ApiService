@@ -1,9 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using ServerApp.DTO;
 using ServerApp.Models;
 
@@ -15,10 +20,13 @@ namespace ServerApp.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        public UserController(UserManager<User> userManager,SignInManager<User> signInManager)
+        private readonly IConfiguration _configuration;
+        
+        public UserController(UserManager<User> userManager,SignInManager<User> signInManager,IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _configuration = configuration;
         }
 
         //http://localhost:5000/api/user/register
@@ -58,12 +66,41 @@ namespace ServerApp.Controllers
             if(result.Succeeded){
                 //login
                 return Ok(new {
-                    token  = "token",
-                    username = user.UserName
+                    token  = GenerateJwtToken(user)
                 });
             }
 
             return Unauthorized();
+        }
+
+        private string GenerateJwtToken(User user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration.GetSection("AppSettings:Secret").Value);
+        
+            var tokenDescriptor = new SecurityTokenDescriptor{
+                //token bilgisi içerisinde olmasını istediğim kısımlar
+                Subject = new ClaimsIdentity(new Claim[]{
+                    new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+                    new Claim(ClaimTypes.Name,user.UserName)
+                }),
+                //token 'ı kim oluşturdu bilgisi
+                Issuer = "emrehanoglu.com",
+
+                //token gecerlilik süresi bilgisi
+                Expires = DateTime.UtcNow.AddDays(1),
+
+                //token 'ı şifrelendiği kısım,
+                //şifrelenirken kullanılan key bilgisi ve algoritma verilir
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+                                                            SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            //artık token 'ı oluşturabilirim.
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            //elimde byte tipinde token bilgisi var artık bunu string tipinde geri döndürmem lazım
+            return tokenHandler.WriteToken(token);
         }
     }
 }

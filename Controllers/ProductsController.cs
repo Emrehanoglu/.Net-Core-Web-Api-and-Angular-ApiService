@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -13,6 +14,7 @@ using ServerApp.Models;
 namespace ServerApp.Controllers
 {
     //localhost:5000/api/Products şeklinde url 'ler ile çalışacağım.
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
@@ -24,6 +26,7 @@ namespace ServerApp.Controllers
         } 
 
         //localhost:5000/api/Products
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult> GetProducts(){
             var products = await _socialContext.Products.Select(p => new ProductDTO(){
@@ -82,7 +85,7 @@ namespace ServerApp.Controllers
             {
                 await _socialContext.SaveChangesAsync();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return NotFound();
             }
