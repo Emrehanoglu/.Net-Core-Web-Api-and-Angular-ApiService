@@ -45,7 +45,7 @@ namespace ServerApp
                 options.Lockout.MaxFailedAccessAttempts = 5; //hesap 5 yanlış denemeden sonra kitlenir
                 options.Lockout.AllowedForNewUsers = true; //yeni hesap olsutruna bir kişinin hesabı kitlenebilir
 
-                options.User.AllowedUserNameCharacters="abcABC123-._@+"; //parolada olması gereken karakterler
+                options.User.AllowedUserNameCharacters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+"; //parolada olması gereken karakterler
                 options.User.RequireUniqueEmail=true; //kullanıcıların mail adresleri aynı olamaz.
             });
             services.AddControllers().AddNewtonsoftJson();
