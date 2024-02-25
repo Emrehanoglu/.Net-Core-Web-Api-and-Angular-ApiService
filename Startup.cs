@@ -104,6 +104,10 @@ namespace ServerApp
                         //gercekten bir hata gelmiş ise
                         if(contextError != null){
                             //loglama yapılabilir
+
+                            //middleware 'e hata yönetimi için dahil olduğum süreci sonlandırıyorum
+                            //aşağıda ToString() olara ErrorDetails olusturdum,
+                            //oluşan yapı ErrorDetails içerisinde Json formata dönüşecek.
                             await context.Response.WriteAsync(new ErrorDetails(){
                                 StatusCode = context.Response.StatusCode,
                                 Message = contextError.Error.Message
