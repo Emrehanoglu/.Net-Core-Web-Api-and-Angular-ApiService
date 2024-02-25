@@ -32,6 +32,9 @@ namespace ServerApp.Controllers
         //http://localhost:5000/api/user/register
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDTO model){
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var user = new User{
                 UserName = model.UserName,
                 Email = model.Email,
@@ -51,8 +54,10 @@ namespace ServerApp.Controllers
         //http://localhost:5000/api/user/login
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDTO model){
-            
-            throw new Exception("deneme hatası");
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            //throw new Exception("deneme hatası");
 
             //model üzerinden UserName bilgisi alındığı için,
             //bakalım gercekten boyle bir kullanıcı var mı? 
