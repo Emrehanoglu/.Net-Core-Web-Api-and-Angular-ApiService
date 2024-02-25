@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -82,6 +85,32 @@ namespace ServerApp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }else{
+                app.UseExceptionHandler(appError => {
+                    //fırlatılan Exception bir request şeklinde gelecek
+                    //bu noktada JSON formatında gelecek olan Exception 'ı
+                    //bir response içerisinde dolduracağım.
+                    //bu işlemi de middleware 'e dahil olup gercekleştiriyorum.
+                    appError.Run(async context => {
+                        //exception statuscode bilgisini respone içerisine aldım
+                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                        
+                        //exception türünü response içerisine aldım
+                        context.Response.ContentType = "application/json";
+
+                        //exception bilgisini response içerisine aldım
+                        var contextError = context.Features.Get<IExceptionHandlerFeature>();
+                    
+                        //gercekten bir hata gelmiş ise
+                        if(contextError != null){
+                            //loglama yapılabilir
+                            await context.Response.WriteAsync(new ErrorDetails(){
+                                StatusCode = context.Response.StatusCode,
+                                Message = contextError.Error.Message
+                            }.ToString());
+                        }
+                    });
+                });
             }
 
             // app.UseHttpsRedirection();

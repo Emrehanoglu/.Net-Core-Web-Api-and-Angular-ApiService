@@ -51,14 +51,8 @@ namespace ServerApp.Controllers
         //http://localhost:5000/api/user/login
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDTO model){
-            try
-            {
-                throw new Exception("deneme hatası");
-            }
-            catch (System.Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
+            
+            throw new Exception("deneme hatası");
 
             //model üzerinden UserName bilgisi alındığı için,
             //bakalım gercekten boyle bir kullanıcı var mı? 
