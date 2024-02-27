@@ -16,20 +16,20 @@ namespace ServerApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController:ControllerBase
+    public class AuthController:ControllerBase
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IConfiguration _configuration;
         
-        public UserController(UserManager<User> userManager,SignInManager<User> signInManager,IConfiguration configuration)
+        public AuthController(UserManager<User> userManager,SignInManager<User> signInManager,IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
         }
 
-        //http://localhost:5000/api/user/register
+        //http://localhost:5000/api/auth/register
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDTO model){
             if(!ModelState.IsValid)
@@ -51,7 +51,7 @@ namespace ServerApp.Controllers
             return BadRequest(result.Errors);
         }
 
-        //http://localhost:5000/api/user/login
+        //http://localhost:5000/api/auth/login
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDTO model){
             if(!ModelState.IsValid)

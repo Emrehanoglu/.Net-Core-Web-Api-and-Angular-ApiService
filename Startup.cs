@@ -52,7 +52,9 @@ namespace ServerApp
                 options.User.AllowedUserNameCharacters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+"; //parolada olması gereken karakterler
                 options.User.RequireUniqueEmail=true; //kullanıcıların mail adresleri aynı olamaz.
             });
-            services.AddControllers().AddNewtonsoftJson();
+            services.AddControllers().AddNewtonsoftJson(options => {
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddCors(options => {
                 options.AddPolicy(
                     name: "_myAllowOrigins",
