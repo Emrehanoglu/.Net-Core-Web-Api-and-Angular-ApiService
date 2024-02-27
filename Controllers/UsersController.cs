@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ServerApp.Data;
+using ServerApp.DTO;
 
 namespace ServerApp.Controllers
 {
@@ -25,7 +26,16 @@ namespace ServerApp.Controllers
         public async Task<IActionResult> GetUsers()
         {
             var users = await _socialRepository.GetUsers();
-            return Ok(users);
+
+            var liste = new List<UserForListDTO>();
+            foreach(var user in users){
+                liste.Add(new UserForListDTO{
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    Gender = user.Gender
+                });
+            }
+            return Ok(liste);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
