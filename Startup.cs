@@ -37,6 +37,7 @@ namespace ServerApp
         {
             services.AddDbContext<SocialContext>(x=>x.UseSqlite("Data Source=social.db"));
             services.AddIdentity<User,Role>().AddEntityFrameworkStores<SocialContext>();
+            services.AddScoped<ISocialRepository,SocialRepository>();
             services.Configure<IdentityOptions>(options => {
                 options.Password.RequireDigit = true; //parola da sayısal değer olsun.
                 options.Password.RequireLowercase = true; //parola da küçük harf olsun. 
@@ -80,11 +81,12 @@ namespace ServerApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,UserManager<User> userManager)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                SeedDatabase.Seed(userManager).Wait(); //async metot old. için .Wait() dedim.
             }else{
                 app.UseExceptionHandler(appError => {
                     //fırlatılan Exception bir request şeklinde gelecek
