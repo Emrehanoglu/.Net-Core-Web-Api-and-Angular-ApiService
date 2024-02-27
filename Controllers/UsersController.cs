@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,31 +18,32 @@ namespace ServerApp.Controllers
     public class UsersController : Controller
     {
         public ISocialRepository _socialRepository;
+        private readonly IMapper _mapper;
 
-        public UsersController(ISocialRepository socialRepository)
+        public UsersController(ISocialRepository socialRepository, IMapper mapper)
         {
             _socialRepository = socialRepository;
+            _mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
             var users = await _socialRepository.GetUsers();
 
-            var liste = new List<UserForListDTO>();
-            foreach(var user in users){
-                liste.Add(new UserForListDTO{
-                    Id = user.Id,
-                    UserName = user.UserName,
-                    Gender = user.Gender
-                });
-            }
-            return Ok(liste);
+            //hedef tip yani dönüştürmek istediğim tip UserForListDTO,
+            //dönüştürülen bilgi ise users.
+            //GetUsers metodu IEnumerable geldiği için Map kısmıda IEnumerable olmalı.
+            var listOfUsers = _mapper.Map<IEnumerable<UserForListDTO>>(users);
+            return Ok(listOfUsers);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _socialRepository.GetUser(id);
-            return Ok(user);
+
+            var userObj = _mapper.Map<UserForDetailsDTO>(user);
+            
+            return Ok(userObj);
         }
     }
 }
