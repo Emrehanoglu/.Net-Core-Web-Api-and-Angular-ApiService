@@ -19,6 +19,6 @@ namespace ServerApp.DTO
         public string Country { get; set; }
         public string Introduction { get; set; }
         public string Hobbies { get; set; }
-        public List<Image> Images { get; set; } //kullanıcının bütün fotolarını alacağım
+        public List<ImagesForDetailsDTO> Images { get; set; } //kullanıcının bütün fotolarını alacağım
     }
 }

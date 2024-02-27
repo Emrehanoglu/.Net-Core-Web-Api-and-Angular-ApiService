@@ -17,6 +17,6 @@ namespace ServerApp.DTO
         public DateTime LastActive { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public Image Images { get; set; } //kullanıcının sadece profil fotosunu alacağım
+        public ImagesForDetailsDTO Image { get; set; } //kullanıcının sadece profil fotosunu alacağım
     }
 }
