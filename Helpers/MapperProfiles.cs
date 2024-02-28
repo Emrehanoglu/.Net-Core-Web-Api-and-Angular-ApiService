@@ -21,7 +21,9 @@ namespace ServerApp.Helpers
             CreateMap<User, UserForDetailsDTO>().ForMember(dest => dest.ProfileImageUrl, opt => 
                 opt.MapFrom(src => src.Images.FirstOrDefault(i => i.IsProfile).Name))
                 .ForMember(dest => dest.Age, opt => 
-                opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
+                opt.MapFrom(src => src.DateOfBirth.CalculateAge()))
+                .ForMember(dest => dest.Images, opt => 
+                opt.MapFrom(src => src.Images.Where(i => !i.IsProfile).ToList()));
             CreateMap<Image, ImagesForDetailsDTO>();
         }
     }
