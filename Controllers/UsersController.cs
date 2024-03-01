@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -12,7 +13,7 @@ using ServerApp.DTO;
 
 namespace ServerApp.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class UsersController : Controller
@@ -44,6 +45,32 @@ namespace ServerApp.Controllers
             var userObj = _mapper.Map<UserForDetailsDTO>(user);
             
             return Ok(userObj);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, UserForUpdateDTO model)
+        {
+            //kullanıcının elindeki token bilgisi içerisindeki payload alanındaki id bilgisi ile
+            //update metoduna gelen id bilgisinin aynı olması gerekiyor
+            //kullanıcı kendisinden başka bir id 'yi güncelleyememeli
+            if(id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            {
+                return BadRequest("not valid request");
+            }
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = await _socialRepository.GetUser(id);
+
+            //model 'den gelen bilgiler UserForUpdateDTO içerisine set edilecek.
+            _mapper.Map<UserForUpdateDTO>(model);
+
+            if(await _socialRepository.SaveChanges()){
+                return Ok();
+            }else{
+                throw new Exception("güncelleme sırasında bir hata olustu");
+            }
         }
     }
 }

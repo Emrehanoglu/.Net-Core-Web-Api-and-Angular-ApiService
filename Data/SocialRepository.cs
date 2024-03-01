@@ -14,6 +14,24 @@ namespace ServerApp.Data
         {
             _context = context;
         }
+
+        public void Add<T>(T entity) where T : class
+        {
+            _context.Add(entity);
+        }
+
+        public void Delete<T>(T entity) where T : class
+        {
+            _context.Remove(entity);
+        }
+
+        public async Task<bool> SaveChanges()
+        {
+            //SaveChangesAsync normalde int bir değer döner. 
+            //0 dan büyük bir değer dönmüşse true olarak değerlendirip true döneceğim.
+            return await _context.SaveChangesAsync() > 0; 
+        }
+
         public async Task<User> GetUser(int id)
         {
             var user =  await _context.Users.Include(i=>i.Images).FirstOrDefaultAsync(x=>x.Id==id);

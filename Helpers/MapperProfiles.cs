@@ -14,8 +14,8 @@ namespace ServerApp.Helpers
         public MapperProfiles()
         {
             //ctor içerisinde mapleyeceğim objeleri tanıtmam gerekiyor
-            CreateMap<User, UserForListDTO>().ForMember(dest => dest.Image, opt => 
-                opt.MapFrom(src => src.Images.FirstOrDefault(i => i.IsProfile)))
+            CreateMap<User, UserForListDTO>().ForMember(dest => dest.ImageUrl, opt => 
+                opt.MapFrom(src => src.Images.FirstOrDefault(i => i.IsProfile).Name))
                 .ForMember(dest => dest.Age, opt => 
                 opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
             CreateMap<User, UserForDetailsDTO>().ForMember(dest => dest.ProfileImageUrl, opt => 
@@ -25,6 +25,7 @@ namespace ServerApp.Helpers
                 .ForMember(dest => dest.Images, opt => 
                 opt.MapFrom(src => src.Images.Where(i => !i.IsProfile).ToList()));
             CreateMap<Image, ImagesForDetailsDTO>();
+            CreateMap<User, UserForUpdateDTO>().ReverseMap();
         }
     }
 }
