@@ -20,6 +20,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using ServerApp.Data;
+using ServerApp.Helpers;
 using ServerApp.Models;
 
 namespace ServerApp
@@ -39,6 +40,7 @@ namespace ServerApp
             services.AddDbContext<SocialContext>(x=>x.UseSqlite("Data Source=social.db"));
             services.AddIdentity<User,Role>().AddEntityFrameworkStores<SocialContext>();
             services.AddScoped<ISocialRepository,SocialRepository>();
+            services.AddScoped<LastActiveActionFilter>();
             services.Configure<IdentityOptions>(options => {
                 options.Password.RequireDigit = true; //parola da sayısal değer olsun.
                 options.Password.RequireLowercase = true; //parola da küçük harf olsun. 

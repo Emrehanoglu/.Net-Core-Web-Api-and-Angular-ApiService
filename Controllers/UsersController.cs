@@ -10,9 +10,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ServerApp.Data;
 using ServerApp.DTO;
+using ServerApp.Helpers;
 
 namespace ServerApp.Controllers
 {
+    //[ServiceFilter(typeof(LastActiveActionFilter))]
     //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
@@ -35,6 +37,7 @@ namespace ServerApp.Controllers
             //dönüştürülen bilgi ise users.
             //GetUsers metodu IEnumerable geldiği için Map kısmıda IEnumerable olmalı.
             var listOfUsers = _mapper.Map<IEnumerable<UserForListDTO>>(users);
+            
             return Ok(listOfUsers);
         }
         [HttpGet("{id}")]
