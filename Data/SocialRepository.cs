@@ -43,5 +43,11 @@ namespace ServerApp.Data
             var users = await _context.Users.Include(i=>i.Images).ToListAsync();
             return users;
         }
+
+        public async Task<bool> IsAlreadyFollowed(int followerUserId, int userId)
+        {
+            return await _context.UserToUser
+            .AnyAsync(i => i.UserId == userId && i.FollowerId == followerUserId);
+        }
     }
 }

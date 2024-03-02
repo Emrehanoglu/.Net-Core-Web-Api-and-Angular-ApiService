@@ -13,5 +13,6 @@ namespace ServerApp.Data
         Task<bool> SaveChanges();  
         Task<User> GetUser(int id);
         Task<IEnumerable<User>> GetUsers();
+        Task<bool> IsAlreadyFollowed(int followerUserId, int userId);
     }
 }

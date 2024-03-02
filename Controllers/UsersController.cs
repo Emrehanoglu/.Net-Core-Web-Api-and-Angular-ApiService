@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using ServerApp.Data;
 using ServerApp.DTO;
 using ServerApp.Helpers;
+using ServerApp.Models;
 
 namespace ServerApp.Controllers
 {
@@ -74,6 +75,47 @@ namespace ServerApp.Controllers
             }else{
                 throw new Exception("güncelleme sırasında bir hata olustu");
             }
+        }
+
+        //followerUserId ----> sisteme login olan, takip edecek olan kullanıcı
+        //userId ----> takip edilecek olan kullanıcı
+        //https://localhost:5000/api/users/1/follow/2 
+        [HttpPost("{followerUserId}/follow/{userId}")]
+        public async Task<IActionResult> FollowUser(int followerUserId, int userId){
+            //sisteme login olan kullanıcının token bilgisi içerisindeki id ile
+            //url 'deki followerId aynı olmalı
+            if(followerUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            {
+                return Unauthorized();
+            }
+
+            if(followerUserId == userId){
+                return BadRequest("Kendinizi takip edemezsiniz");
+            }
+
+            //kullanıcı daha önceden diğer kullanıcıyı takip etmiş mi kontrolü
+            var IsAlreadyFollowed = await _socialRepository.IsAlreadyFollowed(followerUserId,userId);
+            if(IsAlreadyFollowed){
+                return BadRequest("Zaten kullanıcıyı takip ediyorsunuz");
+            }
+
+            //takip etmek istenilen kullanıcı bilgisi sistemde gercekten var mı kontrolü
+            if(await _socialRepository.GetUser(userId) == null){
+                return NotFound();
+            }
+
+            //her şey ok ise.
+            var follow = new UserToUser(){
+                UserId = userId,
+                FollowerId = followerUserId
+            };
+
+            _socialRepository.Add<UserToUser>(follow);
+
+            if(await _socialRepository.SaveChanges())
+                return Ok();
+            
+            return BadRequest("Hata Oluştu");
         }
     }
 }

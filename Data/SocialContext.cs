@@ -17,6 +17,7 @@ namespace ServerApp.Data
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<UserToUser> UserToUser { get; set; }
 
         //UserToUser tablosu için.
         protected override void OnModelCreating(ModelBuilder builder)
