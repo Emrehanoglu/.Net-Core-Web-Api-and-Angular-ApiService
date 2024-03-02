@@ -22,7 +22,8 @@ namespace ServerApp.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly IConfiguration _configuration;
         
-        public AuthController(UserManager<User> userManager,SignInManager<User> signInManager,IConfiguration configuration)
+        public AuthController(UserManager<User> userManager,SignInManager<User> signInManager
+        ,IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -67,7 +68,7 @@ namespace ServerApp.Controllers
             var user = await _userManager.FindByNameAsync(model.UserName);
 
             if(user==null){
-                return BadRequest(new { message = "username is not exists"});
+                return BadRequest("username is not exists");
             }
 
             //username bilgisi ile parolayı kontrol ediyorum
@@ -91,6 +92,8 @@ namespace ServerApp.Controllers
         
             var tokenDescriptor = new SecurityTokenDescriptor{
                 //token bilgisi içerisinde olmasını istediğim kısımlar
+                //Subject kısmında belirlediğim id ve userName alanlarını ileriki kısımlarda kullandım.
+                //bu alanları bularak orneğin login olan kullanıcının id 'sini bularak işlemler yaptım.
                 Subject = new ClaimsIdentity(new Claim[]{
                     new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
                     new Claim(ClaimTypes.Name,user.UserName)
@@ -99,9 +102,10 @@ namespace ServerApp.Controllers
                 Issuer = "emrehanoglu.com",
 
                 //token gecerlilik süresi bilgisi
+                //token bir gün boyunca gecerli olacak.
                 Expires = DateTime.UtcNow.AddDays(1),
 
-                //token 'ı şifrelendiği kısım,
+                //token 'ın şifrelendiği kısım,
                 //şifrelenirken kullanılan key bilgisi ve algoritma verilir
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                                                             SecurityAlgorithms.HmacSha256Signature)

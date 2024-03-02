@@ -42,7 +42,7 @@ namespace ServerApp
             services.AddScoped<ISocialRepository,SocialRepository>();
             services.AddScoped<LastActiveActionFilter>();
             services.Configure<IdentityOptions>(options => {
-                options.Password.RequireDigit = true; //parola da sayısal değer olsun.
+                options.Password.RequireDigit = true;     //parola da sayısal değer olsun.
                 options.Password.RequireLowercase = true; //parola da küçük harf olsun. 
                 options.Password.RequireUppercase = true; //parola da büyük harf olsun. 
                 options.Password.RequireNonAlphanumeric = true; //parola da nokta,virgül gibi değerler olsun.
@@ -131,7 +131,7 @@ namespace ServerApp
 
             app.UseCors(MyAllowOrigins);
 
-            app.UseAuthentication();
+            app.UseAuthentication(); //Identity ile birlikte bu kısım eklendi.
 
             app.UseAuthorization();
 
